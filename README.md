@@ -80,4 +80,6 @@ Example JSON
     ]
 }
 ```
+## LICENSE
 
+[The MIT License (MIT)](https://github.com/errwischt/stacktrace-parser/blob/master/LICENSE)
