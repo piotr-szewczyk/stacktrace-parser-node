@@ -123,6 +123,6 @@ const readFileContext = async (path: string): Promise<string> => {
     return context;
 };
 
-export const stackparser = {
+export const stacktrace = {
     parse
 }
