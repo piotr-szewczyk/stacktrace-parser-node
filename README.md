@@ -1,6 +1,6 @@
 # Stacktrace Parser
 
-Simple and lightweight stacktrace parser for NodeJS written in Typescript with getting the code in which the error occurs.
+Stacktrace parser for NodeJS written in Typescript with getting the code in which the error occurs.
 
 # Installation
 ```bashv0.1
