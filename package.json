@@ -1,6 +1,6 @@
 {
   "name": "stacktrace-parser-node",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,6 +10,9 @@
     "trace",
     "stack",
     "node"
+  ],
+  "files": [
+    "dist"
   ],
   "homepage": "https://github.com/piotr-szewczyk/stacktrace-parser-node",
   "repository": {
