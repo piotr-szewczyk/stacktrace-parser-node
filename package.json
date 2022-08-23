@@ -1,6 +1,6 @@
 {
   "name": "stacktrace-parser-node",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,8 +24,6 @@
     "lint": "run-s lint:prettier",
     "lint:prettier": "prettier */**/*.{js,ts} --write",
     "prebuild": "rimraf ./dist",
-    "prepack": "yarn lint",
-    "package": "yarn build && npm pack",
     "test": "jest"
   },
   "devDependencies": {
@@ -35,8 +33,7 @@
     "ts-node": "^10.4.0",
     "tslib": "^2.3.1",
     "typescript": "^4.5.5",
-    "tslint": "^5.11.0",
-    "npm-run-all": "^4.1.2"
+    "tslint": "^5.11.0"
   },
   "jest": {
     "verbose": false,
