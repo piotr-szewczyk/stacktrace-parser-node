@@ -108,7 +108,7 @@ const getSourceCode = async (
     lineNumber - 1
   );
   const postCode: string[] = linesOfCode.slice(
-    lineNumber + 1,
+    lineNumber,
     lineNumber + MAX_CODE_LINES
   );
 
