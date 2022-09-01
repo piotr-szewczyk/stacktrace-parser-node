@@ -1,4 +1,4 @@
-import { stacktrace } from "../src";
+import { stacktrace } from "..";
 
 describe('parse', () => {
     test('parse basic error', async () => {
