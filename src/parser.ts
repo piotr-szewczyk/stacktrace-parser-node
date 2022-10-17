@@ -45,7 +45,7 @@ const createTrace = async (line: string): Promise<Trace | undefined> => {
   }
 
   let functionName: string | undefined;
-  let splitedPath: string[] | undefined;
+  let extension: string | undefined;
 
   if (!lineMatch || lineMatch[0].includes("<anonymous>")) {
     return undefined;
@@ -64,21 +64,19 @@ const createTrace = async (line: string): Promise<Trace | undefined> => {
     !path.includes("node_modules\\") &&
     !path.includes("internal/");
 
-  const isNodeProcess = path?.includes("internal") || path?.includes("process");
-  isNodeProcess
-    ? (splitedPath = path?.split("/"))
-    : (splitedPath = path?.split("\\"));
+  const filename = lineMatch[2]?.startsWith('file://') ? lineMatch[2].substr(7) : lineMatch[2];
 
-  const fileName = splitedPath[splitedPath?.length - 1];
+  if (filename) {
+    const splitedFilename = filename?.split(".");
+    extension = splitedFilename[splitedFilename.length - 1];
+  }
 
-  const splitedFilename = fileName.split(".");
-  const extension = splitedFilename[splitedFilename.length - 1];
   const lineNo = parseInt(lineMatch[3], 10);
 
   const code = await getSourceCode(path, lineNo);
 
   const properties = {
-    filename: fileName,
+    filename,
     function: functionName,
     absPath: path,
     lineNo,
