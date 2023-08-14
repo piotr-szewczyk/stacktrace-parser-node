@@ -76,7 +76,7 @@ const createTrace = async (line: string): Promise<Trace | undefined> => {
   const code = await getSourceCode(path, lineNo);
 
   const properties = {
-    filename,
+    filename: parseFilename(filename),
     function: functionName,
     absPath: path,
     lineNo,
@@ -127,6 +127,32 @@ const readFileContext = async (path: string): Promise<string> => {
 
   return context;
 };
+
+const parseFilename = (filename: string): string => {
+  const splits = filename.split("\\");
+  const searchvalues = ["node_modules", "dist", "build", "lib"];
+
+  let index = undefined;
+
+  for (const search of searchvalues) {
+    if (index && index !== -1) {
+      continue;
+    }
+
+    if (splits.indexOf(search) !== -1) {
+      index = splits.indexOf(search);
+    }
+  }
+
+  if (!index) {
+    return filename;
+  }
+
+  const slices = splits.slice(index, splits.length);
+  const response = "...\\" + slices.join("\\");
+
+  return response;
+}
 
 export const stacktrace = {
   parse,
